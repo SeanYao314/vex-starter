@@ -46,14 +46,21 @@ void backwards(int distance) {
 
 task main()
 {
+	//initial movement
+	forward(50);
 	turn_left(90);
+	forward(60);
 	turn_right(90);
-	foward(10);
-	backwards(10);
-	turn_left(90);
-	foward(10);
-	turn_right(90);
-	backwards(90);
-	turn_left(50);
-	turn_right(50);
+	forward(50);
+
+	//move back to the original position
+
+	// foward(10);
+	// backwards(10);
+	// turn_left(90);
+	// foward(10);
+	// turn_right(90);
+	// backwards(90);
+	// turn_left(50);
+	// turn_right(50);
 }
