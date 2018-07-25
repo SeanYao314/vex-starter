@@ -5,6 +5,7 @@
 
 int TURN_SPEED = 50;
 
+
 void move(int leftSpeed, int rightSpeed) {
 	motor(topRight) = rightSpeed;
 	motor(bottomRight) = rightSpeed;
@@ -30,7 +31,7 @@ void turn_right(int degree) {
 	stop();
 }
 
-void foward(int distance) {
+void forward(int distance) {
 	float time = (distance/TURN_SPEED)*1000;
 	move(TURN_SPEED, TURN_SPEED);
 	wait1Msec(time);
@@ -39,7 +40,7 @@ void foward(int distance) {
 
 void backwards(int distance) {
 	float time = (distance/TURN_SPEED)*1000;
-	move(TURN_SPEED, -TURN_SPEED);
+	move(-TURN_SPEED, -TURN_SPEED);
 	wait1Msec(time);
 	stop();
 }
@@ -49,14 +50,16 @@ task main()
 	//initial movement
 	forward(50);
 	turn_left(90);
-	forward(60);
+	forward(50);
 	turn_right(90);
 	forward(50);
 
 	//move back to the original position
-	forward(50);
+
+	backwards(50);
 	turn_right(90);
 	forward(50);
 	turn_left(90);
-	backwards(150);
+	backwards(50);
+
 }
