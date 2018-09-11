@@ -1,11 +1,13 @@
-#pragma config(Motor,  port1,           intake,        tmotorVex393_HBridge, openLoop)
-#pragma config(Motor,  port6,           gun,           tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port6,           Gun,           tmotorVex393_MC29, openLoop)
 
-int intakeSpeed = -50;
 int gunSpeed = 75;
 
 task gun_control() {
 	while (true) {
-
+		if(VexBtn(6U) == 1) {
+			Motor(Gun) = gunSpeed;
+		} else {
+			Motor(Gun) = 0;
+		}
 	}
 }

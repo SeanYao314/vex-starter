@@ -1,11 +1,18 @@
-#pragma config(Motor,  port1,           intake,        tmotorVex393_HBridge, openLoop)
-#pragma config(Motor,  port6,           gun,           tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port1,           Intake,        tmotorVex393_HBridge, openLoop)
 
 int intakeSpeed = -50;
-int gunSpeed = 75;
 
 task intake_control() {
 	while (true) {
-
+		if (VexBtn(5U) == 1) {
+			Motor(Intake) == intakeSpeed;
+		} else {
+			intakeSpeed = 0;
+		}
+		if (VexBtn(5D) == 1) {
+			Motor(Intake) == -intakeSpeed;
+		} else {
+			intakeSpeed = 0;
+		}
 	}
 }

@@ -40,12 +40,8 @@ void turn_right(int speed, int neg_speed, float time) {
 
 task main()
 {
-	forwards(50, 5000);
-	backwards();
-	turn_left();
-	turn_right();
-	forwards();
-	turn_left();
-	backwards();
-	turn_right();
+/*
+
+
+*/
 }
