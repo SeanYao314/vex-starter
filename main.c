@@ -1,8 +1,8 @@
 #pragma config(Motor,  port1,           Intake,      tmotorVex393_HBridge, openLoop, reversed)
-#pragma config(Motor,  port2,           UpLeft, tmotorVex393_MC29, openLoop)
-#pragma config(Motor,  port3,           UpRight, tmotorVex393_MC29, openLoop)
-#pragma config(Motor,  port4,           DownLeft, tmotorVex393_MC29, openLoop)
-#pragma config(Motor,  port5,           DownRight, tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port2,           LeftFront, tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port3,           RightFront, tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port4,           LeftRear, tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port5,           RightRear, tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port6,           TowerUpLeft, tmotorVex393_MC29, openLoop, reversed)
 #pragma config(Motor,  port7,           TowerUpRight, tmotorVex393_MC29, openLoop, reversed)
 #pragma config(Motor,  port8,           TowerDownRight, tmotorVex393_MC29, openLoop)
@@ -32,6 +32,8 @@
 #include "tower.c"
 #include "intake.c"
 
+int MOTOR_THRESHOLD = 10;
+
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
 /*                                                                           */
@@ -52,7 +54,7 @@ task main()
   while (true)
   {
     //checkAutonomous();
-  	printSensorValuesToDebugWindow();
-    wait(1);
+  	//printSensorValuesToDebugWindow();
+    wait(10);
   }
 }

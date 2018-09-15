@@ -1,32 +1,40 @@
-#pragma config(Motor,  port2,           UpLeft,           tmotorVex393_MC29, openLoop)
-#pragma config(Motor,  port3,           UpRight,           tmotorVex393_MC29, openLoop)
-#pragma config(Motor,  port4,           DownLeft,           tmotorVex393_MC29, openLoop)
-#pragma config(Motor,  port5,           DownRight,           tmotorVex393_MC29, openLoop)
 
-int threshold = 10;
+void drive_chassis(int left_speed, int right_speed) {
+	Motor(LeftFront) = left_speed;
+	Motor(LeftRear)  = left_speed;
+	Motor(RightFront) = right_speed;
+	Motor(RightRear) = right_speed;
+}
+
+void stop_chassis() {
+	drive_chassis(0, 0);
+}
+
+void rotate_chassis(int rotate_speed) {
+	drive_chassis(rotate_speed, -1 * rotate_speed);
+}
+
 task chassis_control(){
 	while (true) {
-		if(abs(VexRT(Ch2)) > threshold) {
-			Motor(UpLeft) = VexRt(Ch2);
-			Motor(UpRight) = VexRt(Ch2);
-			Motor(DownLeft) = VexRt(Ch2);
-			Motor(DownRight) = VexRt(Ch2);
+		int drive_speed = vexRT[Ch1];
+		int turn_speed = vexRT[Ch2];
+		int rotate_speed = vexRT[Ch3];
+
+		if (abs(rotate_speed) > MOTOR_THRESHOLD) {
+			rotate_chassis(rotate_speed);
+		} else if (abs(drive_speed) > MOTOR_THRESHOLD) {
+			int left_speed = drive_speed;
+			int right_speed = drive_speed;
+			if (abs(turn_speed) > MOTOR_THRESHOLD) {
+				if (turn_speed > 0) {
+					left_speed -= turn_speed;
+				} else {
+					right_speed += turn_speed;
+				}
+			}
+			drive_chassis(left_speed, right_speed);
 		} else {
-			Motor(UpLeft) = 0;
-			Motor(UpRight) = 0;
-			Motor(DownLeft) = 0;
-			Motor(DownRight) = 0;
-		}
-		if(abs(VexRT(Ch4)) > threshold) {
-			Motor(UpLeft) = VexRT(Ch4);
-			Motor(UpRight) = -VexRt(Ch4);
-			Motor(DownRight) = -VexRT(Ch4);
-			Motor(DownLeft) = VexRT(Ch4);
-		} else {			
-			Motor(UpLeft) = 0;
-			Motor(UpRight) = 0;
-			Motor(DownLeft) = 0;
-			Motor(DownRight) = 0;
+			stop_chassis();
 		}
 	}
 }
