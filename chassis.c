@@ -1,3 +1,5 @@
+int CHASSIS_MOTOR_THRESHOLD = 10;
+
 
 void drive_chassis(int left_speed, int right_speed) {
 	Motor(LeftFront) = left_speed;
@@ -20,12 +22,12 @@ task chassis_control(){
 		int turn_speed = vexRT[Ch2];
 		int rotate_speed = vexRT[Ch3];
 
-		if (abs(rotate_speed) > MOTOR_THRESHOLD) {
+		if (abs(rotate_speed) > CHASSIS_MOTOR_THRESHOLD) {
 			rotate_chassis(rotate_speed);
-		} else if (abs(drive_speed) > MOTOR_THRESHOLD) {
+		} else if (abs(drive_speed) > CHASSIS_MOTOR_THRESHOLD) {
 			int left_speed = drive_speed;
 			int right_speed = drive_speed;
-			if (abs(turn_speed) > MOTOR_THRESHOLD) {
+			if (abs(turn_speed) > CHASSIS_MOTOR_THRESHOLD) {
 				if (turn_speed > 0) {
 					left_speed -= turn_speed;
 				} else {

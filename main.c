@@ -32,8 +32,6 @@
 #include "tower.c"
 #include "intake.c"
 
-int MOTOR_THRESHOLD = 10;
-
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
 /*                                                                           */
@@ -55,6 +53,6 @@ task main()
   {
     //checkAutonomous();
   	//printSensorValuesToDebugWindow();
-    wait(10);
+    wait1Msec(100);
   }
 }
