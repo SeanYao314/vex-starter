@@ -1,19 +1,32 @@
-int threshold = 10;
-int armspeed = 100; 
+int _tower_motor_threshold = 10;
+int armspeed = 100;
 
-task tower_control()
-{
+void _move_tower(int speed) {
+	Motor(TowerUpLeft) = speed;
+	Motor(TowerDownRight) = speed;
+	Motor(TowerDownLeft) = speed;
+	Motor(TowerUpRight) = speed;
+}
+
+void _stop_tower() {
+	_move_tower(0);
+}
+
+int _get_tower_speed() {
+	return VexRT(Ch3);
+}
+
+bool _should_move_tower() {
+	return abs(_get_tower_speed()) > _tower_motor_threshold;
+}
+
+task tower_control() {
 	while (true) {
-		// if(abs(VexRT(Ch3)) > threshold) {
-		// 	Motor(TowerUpLeft) = armspeed;
-		// 	Motor(TowerDownRight) = armspeed;
-		// 	Motor(TowerDownLeft) = armspeed;
-		// 	Motor(TowerUpRight) = armspeed; 
-		// } else {
-		// 	Motor(TowerUpLeft) = 0;
-		// 	Motor(TowerDownRight) = 0;
-		// 	Motor(TowerDownLeft) = 0;
-		// 	Motor(TowerUpRight) = 0; 
-		// }
+		if(_should_move_tower()) {
+			_move_tower(_get_tower_speed());
+		} else {
+			_stop_tower();
+		}
+		wait1Msec(100);
 	}
 }

@@ -1,12 +1,12 @@
 
-int gunSpeed = 75;
+int _gun_motor_speed = 75;
 
 task gun_control() {
 	while (true) {
-		// if(VexBtn(6U) == 1) {
-		// 	Motor(Gun) = gunSpeed;
-		// } else {
-		// 	Motor(Gun) = 0;
-		// }
+		if(VexRt(Btn6U) == 1) {
+			Motor(Gun) = _gun_motor_speed;
+		} else {
+			Motor(Gun) = 0;
+		}
 	}
 }
