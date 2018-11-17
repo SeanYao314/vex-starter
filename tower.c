@@ -1,11 +1,8 @@
 int _tower_motor_threshold = 10;
-int armspeed = 100;
 
 void _move_tower(int speed) {
-	Motor(TowerUpLeft) = speed;
-	Motor(TowerDownRight) = speed;
-	Motor(TowerDownLeft) = speed;
-	Motor(TowerUpRight) = speed;
+	Motor(TowerUp) = speed;
+	Motor(TowerDown) = speed;
 }
 
 void _stop_tower() {
@@ -13,7 +10,7 @@ void _stop_tower() {
 }
 
 int _get_tower_speed() {
-	return VexRT(Ch3);
+	return VexRT(Ch2Xmtr2);
 }
 
 bool _should_move_tower() {

@@ -1,4 +1,4 @@
-int CHASSIS_MOTOR_THRESHOLD = 10;
+int CHASSIS_MOTOR_THRESHOLD = 15;
 
 
 void drive_chassis(int left_speed, int right_speed) {
