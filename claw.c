@@ -1,18 +1,28 @@
+int _claw_motor_threshold = 20;
 
-int clawspeed = 75;
+void _move_claw(int speed) {
+	motor(Claw) = speed;
+}
 
-task claw() {
+void _stop_claw() {
+	_move_claw(0);
+}
+
+int _get_claw_speed() {
+	return vexRT(Ch3Xmtr2);
+}
+
+bool _should_move_claw() {
+	return abs(_get_claw_speed()) > _claw_motor_threshold;
+}
+
+task claw_control() {
 	while (true) {
-		if(VexRt(Btn5U) == 1) {
-			Motor(claw) = clawspeed;
+		if(_should_move_claw()) {
+			_move_claw(_get_claw_speed());
 		} else {
-			Motor(claw) = 0;
+			_stop_claw();
 		}
-
-		if (VexRt(Btn5D) == 1) {
-			Motor(claw) = -clawspeed;
-		} else {
-			Motor(claw) = 0;
-		}
+		wait1Msec(100);
 	}
 }

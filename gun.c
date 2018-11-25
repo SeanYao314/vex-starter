@@ -3,10 +3,11 @@ int _gun_motor_speed = 75;
 
 task gun_control() {
 	while (true) {
-		if(VexRt(Btn6U) == 1) {
-			Motor(Gun) = _gun_motor_speed;
+		if(vexRT(Btn6U) == 1) {
+			motor(Gun) = _gun_motor_speed;
 		} else {
-			Motor(Gun) = 0;
+			motor(Gun) = 0;
 		}
+		wait1Msec(100);		
 	}
 }

@@ -1,14 +1,15 @@
 
-int _intake_motor_speed = -50;
+int _intake_motor_speed = 120;
 
 task intake_control() {
 	while (true) {
 		if (vexRT(Btn5U) == 1) {
-			Motor(Intake) == _intake_motor_speed;
+			motor(Intake) = _intake_motor_speed;
 		} else if (vexRT(Btn5D) == 1) {
-			Motor(Intake) == -_intake_motor_speed;
+			motor(Intake) = -1 * _intake_motor_speed;
 		} else {
-			Motor(Intake) == 0;
+			motor(Intake) = 0;
 		}
+		wait1Msec(100);
 	}
 }
