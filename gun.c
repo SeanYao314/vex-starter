@@ -1,5 +1,5 @@
 
-int _gun_motor_speed = 75;
+int _gun_motor_speed = 127;
 
 task gun_control() {
 	while (true) {
