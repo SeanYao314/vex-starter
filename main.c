@@ -28,6 +28,9 @@
 // Select Download method as "competition"
 #pragma competitionControl(Competition)
 
+//Main competition background code...do not modify!
+//#include "Vex_Competition_Includes.c"
+
 #include "helper.c"
 #include "chassis.c"
 #include "gun.c"

@@ -14,8 +14,8 @@ void stop_chassis() {
 
 task chassis_control() {
 	while (true) {
-		int left_speed = vexRT[Ch2] + vexRT[Ch1];
-		int right_speed = vexRT[Ch2] - vexRT[Ch1];
+		int left_speed = - vexRT[Ch2] + vexRT[Ch1];
+		int right_speed = -vexRT[Ch2] - vexRT[Ch1];
 
 		int max_input = max(abs(left_speed), abs(right_speed));
 		if (max_input >= CHASSIS_MOTOR_THRESHOLD) {

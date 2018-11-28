@@ -9,7 +9,11 @@ void _stop_claw() {
 }
 
 int _get_claw_speed() {
-	return vexRT(Ch3Xmtr2);
+	if (abs(vexRT(Ch3Xmtr2)) > abs(vexRT(Ch4))) {
+		return vexRT(Ch3Xmtr2);
+	} else {
+		return vexRT(Ch4);
+	} 
 }
 
 bool _should_move_claw() {
