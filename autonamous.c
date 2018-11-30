@@ -88,3 +88,6 @@ void intakeFlip(int time) {
 	Motor(intake) = -120;
 	wait1msec(time);
 }
+task autonamous() {
+	
+}
