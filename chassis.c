@@ -1,5 +1,5 @@
 int CHASSIS_MOTOR_THRESHOLD = 20;
-
+int _reverse_front = 1;
 
 void drive_chassis(int left_speed, int right_speed) {
 	motor(LeftFront) = left_speed;
@@ -14,8 +14,14 @@ void stop_chassis() {
 
 task chassis_control() {
 	while (true) {
-		int left_speed = - vexRT[Ch2] + vexRT[Ch1];
-		int right_speed = -vexRT[Ch2] - vexRT[Ch1];
+		if (vexRT(Btn7L) == 1) {
+			_reverse_front = 1;
+		} else if (vexRT(Btn7R) == 1) {
+			_reverse_front = -1;
+		}
+
+		int left_speed = (vexRT[Ch2] * _reverse_front + vexRT[Ch1]);
+		int right_speed = (vexRT[Ch2] * _reverse_front - vexRT[Ch1]);
 
 		int max_input = max(abs(left_speed), abs(right_speed));
 		if (max_input >= CHASSIS_MOTOR_THRESHOLD) {

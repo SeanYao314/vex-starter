@@ -9,11 +9,13 @@ void _stop_claw() {
 }
 
 int _get_claw_speed() {
-	if (abs(vexRT(Ch3Xmtr2)) > abs(vexRT(Ch4))) {
-		return vexRT(Ch3Xmtr2);
-	} else {
-		return vexRT(Ch4);
-	} 
+	int claw_speed = 0;
+	if (vexRT(Btn6UXmtr2) == 1 || vexRT(Btn6U) == 1 ) {
+		claw_speed = 80;
+	} else if (vexRT(Btn6DXmtr2) == 1 || vexRT(Btn6D) == 1 ) {
+		claw_speed = -80;
+	}
+	return claw_speed;
 }
 
 bool _should_move_claw() {

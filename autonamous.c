@@ -72,4 +72,19 @@ void TowerDown(int time, int speed) {
 	Motor(towerDown) = -speed;
 	wait1msec(time);
 }
-void clawUp
+void clawUp(int time, int speed) {
+	Motor(claw) = speed;
+	wait1msec(time);
+}
+void clawDown(int time, int speed) {
+	Motor(claw) = -speed;
+	wait1msec(time);
+}
+void intakeIn(int time) {
+	Motor(intake) = 120;
+	wait1msec(time);
+}
+void intakeFlip(int time) {
+	Motor(intake) = -120;
+	wait1msec(time);
+}

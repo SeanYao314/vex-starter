@@ -2,7 +2,7 @@
 int _gun_motor_speed = -127;
 
 bool is_gun_triggered() {
-	return vexRT(Btn6U) == 1 || vexRT(Btn6UXmtr2) == 1;
+	return vexRT(Btn7U) == 1 || vexRT(Btn7UXmtr2) == 1;
 }
 
 task gun_control() {
