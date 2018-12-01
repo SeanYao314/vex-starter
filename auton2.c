@@ -14,9 +14,9 @@ void auton2() {
 
 	clawUp();
 	wait1Msec(1000);
-	clawStop();
+	stopClaw();
 
-	chassisForward(80)
+	chassisForward(80);
 	wait1Msec(1000);
 	turnCounterClock(45);
 	stopChassis();

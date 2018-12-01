@@ -47,6 +47,7 @@
 #include "auton4.c"
 #include "autonSkills1.c"
 #include "autonSkills2.c"
+#include "debug.c"
 
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
@@ -57,6 +58,9 @@
 /*  function is only called once after the cortex has been powered on and    */
 /*  not every time that the robot is disabled.                               */
 /*---------------------------------------------------------------------------*/
+void pre_auton() {
+
+}
 
 task autonomous() {
   int mode = get_auton_mode();
@@ -85,9 +89,7 @@ task usercontrol() {
 
   while (true)
   {
-    //checkAutonomous();
-    //printSensorValuesToDebugWindow();
+    printDebug();
     wait1Msec(100);
   }
-
 }
