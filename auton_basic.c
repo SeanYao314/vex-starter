@@ -30,16 +30,16 @@ void stopall(int time) {
 	wait1Msec(time);
 }
 void chassisForward(int speed) {
-	motor(LeftRear) = speed;
-	motor(RightRear) = speed;
-	motor(LeftFront) = speed;
-	motor(RightFront) = speed;
-}
-void chassisBackwards(int speed) {
 	motor(LeftRear) = -speed;
 	motor(RightRear) = -speed;
 	motor(LeftFront) = -speed;
 	motor(RightFront) = -speed;
+}
+void chassisBackwards(int speed) {
+	motor(LeftRear) = speed;
+	motor(RightRear) = speed;
+	motor(LeftFront) = speed;
+	motor(RightFront) = speed;
 }
 void chassisRight(int time, int speed) {
 	motor(LeftRear) = speed;
@@ -84,7 +84,7 @@ void shoot() {
 }
 void turn(int degrees) {
 	int speed = 50;
-	int fullRotationTime = 2000;
+	int fullRotationTime = 4000;
 	int time = fullRotationTime/360*degrees;
 	motor(LeftRear) = speed;
 	motor(RightRear) = -speed;
@@ -95,7 +95,7 @@ void turn(int degrees) {
 }
 void turnCounterClock(int degrees) {
 	int speed = 50;
-	int fullRotationTime = 2000;
+	int fullRotationTime = 4000;
 	int time = fullRotationTime/360*degrees;
 	motor(LeftRear) = -speed;
 	motor(RightRear) = speed;

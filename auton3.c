@@ -1,10 +1,15 @@
 void auton3() {
-	chassisForward(50);
-	wait1Msec(750);
+	chassisBackwards(50);
+	wait1Msec(1500);
 	turn(90);
 	stopChassis();
 
-	chassisForward(127);
-	wait1Msec(2250);
+	chassisForward(90);
+	wait1Msec(800);
+	stopChassis();
+
+	wait1Msec(800);
+	chassisBackwards(127);
+	wait1Msec(4000);
 	stopChassis();
 }

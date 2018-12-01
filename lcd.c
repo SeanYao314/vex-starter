@@ -27,44 +27,44 @@ task lcd_control() {
 		clearLCDLine(0);
 		clearLCDLine(1);
 		 
-		if (screen_position == 0) {
+		//if (screen_position == 0) {
 			//Display the Primary Robot battery voltage
 			displayLCDString(0, 0, "Primary: ");
 			sprintf(mainBattery, "%1.2f%c", nImmediateBatteryLevel/1000.0,'V'); //Build the value to be displayed
 			displayNextLCDString(mainBattery);
 			 
-			//Display the Backup battery voltage
-			displayLCDString(1, 0, "Backup: ");
-			sprintf(backupBattery, "%1.2f%c", BackupBatteryLevel/1000.0, 'V');    //Build the value to be displayed
-			displayNextLCDString(backupBattery);
-		} else if (screen_position == 1) {
+			// //Display the Backup battery voltage
+			// displayLCDString(1, 0, "Backup: ");
+			// sprintf(backupBattery, "%1.2f%c", BackupBatteryLevel/1000.0, 'V');    //Build the value to be displayed
+			// displayNextLCDString(backupBattery);
+		//} else if (screen_position == 1) {
 			int mode = get_auton_mode();
 			if (mode == 0) {
-				displayLCDString(0, 0, "Autonamous Off");
+				displayLCDString(1, 0, "Auton Off");
 			} else if (mode == 1) {
-				displayLCDString(0, 0, "Autonamous Blue 1");
+				displayLCDString(1, 0, "Auton Blue 1");
 			} else if (mode == 2) {
-				displayLCDString(0, 0, "Autonamous Red 1");
+				displayLCDString(1, 0, "Auton Red 1");
 			} else if (mode == 3) {
-				displayLCDString(0, 0, "Autonamous Blue 2");
+				displayLCDString(1, 0, "Auton Blue 2");
 			} else if (mode == 4) {
-				displayLCDString(0, 0, "Autonamous Red 2");
+				displayLCDString(1, 0, "Auton Red 2");
 			} else if (mode == 5) {
-				displayLCDString(0, 0, "Autonamous Blue Skill");
+				displayLCDString(1, 0, "Auton Blue Skill");
 			} else if (mode == 6) {
-				displayLCDString(0, 0, "Autonamous Red Skill");
+				displayLCDString(1, 0, "Auton Red Skill");
+			} else {
+				displayLCDString(1, 0, "Unknown");
 			}
-		}
+		//}
 		 
 		//Short delay for the LCD refresh rate
 		wait1Msec(100);
 
-		int lcd_input = _get_lcd_input();
+		// int lcd_input = _get_lcd_input();
 
-		if (lcd_input == leftButton && screen_position > 0) {
-			--screen_position;
-		} else if (lcd_input == rightButton && screen_position < 1) {
-			++screen_position;
-		}
+		// if (lcd_input == leftButton) {
+		// 	screen_position = abs(screen_position + 1) % 2;
+		// }
 	}
 }
