@@ -1,0 +1,4 @@
+void printDebug() {
+	writeDebugStreamLine
+}
+	

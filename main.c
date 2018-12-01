@@ -1,3 +1,4 @@
+#pragma config(Sensor, in1,             AutonSelector, sensorPotentiometer)
 #pragma config(Motor,  port1,           Gun,           tmotorVex393_HBridge, openLoop)
 #pragma config(Motor,  port2,           TowerUp,       tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           TowerDown,     tmotorVex393_MC29, openLoop)
@@ -29,15 +30,24 @@
 #pragma competitionControl(Competition)
 
 //Main competition background code...do not modify!
-//#include "Vex_Competition_Includes.c"
+#include "Vex_Competition_Includes.c"
 
 #include "helper.c"
+#include "sensor.c"
 #include "chassis.c"
 #include "gun.c"
 #include "tower.c"
 #include "intake.c"
 #include "claw.c"
 #include "lcd.c"
+#include "auton_basic.c"
+#include "auton1.c"
+#include "auton2.c"
+#include "auton3.c"
+#include "auton4.c"
+#include "autonSkills1.c"
+#include "autonSkills2.c"
+
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
 /*                                                                           */
@@ -48,19 +58,36 @@
 /*  not every time that the robot is disabled.                               */
 /*---------------------------------------------------------------------------*/
 
-task main()
-{
+task autonomous() {
+  int mode = get_auton_mode();
+  if(mode == 1) {
+    auton1();
+  } else if(mode == 2) {
+    auton2();
+  } else if(mode == 3) {
+    auton3();
+  } else if(mode == 4) {
+    auton4();
+  } else if(mode == 5) {
+    autonSkills1();
+  } else if(mode == 6) {
+    autonSkills2();
+  }
+}
+
+task usercontrol() {
   startTask(chassis_control);
   startTask(gun_control);
   startTask(tower_control);
   startTask(intake_control);
   startTask(claw_control);
-  //startTask(lcd_control);
+  startTask(lcd_control);
 
   while (true)
   {
     //checkAutonomous();
-  	//printSensorValuesToDebugWindow();
+    //printSensorValuesToDebugWindow();
     wait1Msec(100);
   }
+
 }
