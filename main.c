@@ -47,6 +47,7 @@
 #include "autonSkills1.c"
 #include "autonSkills2.c"
 #include "debug.c"
+#include "onebuttonauton.c"
 
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
@@ -88,6 +89,10 @@ task usercontrol() {
 
   while (true)
   {
+    if(vexRT(Btn7U) == 1 && vexRt(Btn7D) == 1) {
+      onebuttonauton();
+    }
+
     printDebug();
     wait1Msec(100);
   }

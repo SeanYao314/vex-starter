@@ -3,6 +3,7 @@ void stopChassis() {
 	motor(RightRear) = 0;
 	motor(LeftFront) = 0;
 	motor(RightFront) = 0;
+	wait1Msec(100);
 }
 // void stopTower() {
 // 	motor(towerUp) = 0;
@@ -80,7 +81,7 @@ void intakeFlip(int time) {
 	wait1Msec(time);
 }
 void shoot() {
-	motor(Gun) = -127;
+	motor(Gun) = 127;
 }
 void turn(int degrees) {
 	int speed = 50;
@@ -95,7 +96,7 @@ void turn(int degrees) {
 }
 void turnCounterClock(int degrees) {
 	int speed = 50;
-	int fullRotationTime = 4000;
+	int fullRotationTime = 5200;
 	int time = fullRotationTime/360*degrees;
 	motor(LeftRear) = -speed;
 	motor(RightRear) = speed;
