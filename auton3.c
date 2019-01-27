@@ -10,6 +10,6 @@ void auton3() {
 
 	wait1Msec(800);
 	chassisBackwards(127);
-	wait1Msec(4000);
+	wait1Msec(3000);
 	stopChassis();
 }

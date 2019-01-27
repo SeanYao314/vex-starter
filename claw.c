@@ -10,10 +10,13 @@ void _stop_claw() {
 
 int _get_claw_speed() {
 	int claw_speed = 0;
-	if (vexRT(Btn6UXmtr2) == 1 || vexRT(Btn6U) == 1 ) {
-		claw_speed = 80;
-	} else if (vexRT(Btn6DXmtr2) == 1 || vexRT(Btn6D) == 1 ) {
-		claw_speed = -80;
+	// if (vexRT(Ch3Xmtr2) > 20 || vexRT(Btn6U) == 1 ) {
+	// 	claw_speed = vexRT(Ch3Xmtr2) * abs(vexRT(Btn6U) - 1) + vexRT(Btn6U) * 80;
+	// } else if (vexRT(Ch3Xmtr2) < -20 || vexRT(Btn6D) == 1 ) {
+	// 	claw_speed = -(vexRT(Ch3Xmtr2) * abs(vexRT(Btn6D - 1)) + vexRT(Btn6D) * 80);
+	// }
+	if (abs(vexRT(Ch3Xmtr2)) > _claw_motor_threshold) {
+		claw_speed = vexRT(Ch3Xmtr2);
 	}
 	return claw_speed;
 }

@@ -3,17 +3,26 @@ const short leftButton = 1;
 const short centerButton = 2;
 const short rightButton = 4;
 
+int _auton_selector = 0;
+
+int _get_bumper_button() {
+	return SensorValue[AutonSelector];
+}
+
 int _get_lcd_input() {
+
+	bool buttonPressed = false;
 	//wait for press
-	while(nLCDButtons == 0) {
+	while(_get_bumper_button() == 1) {
 		wait1Msec(5);
+		buttonPressed = true;
 	}
 
-	while(nLCDButtons != 0) {
-		wait1Msec(5);
+	if (buttonPressed) {
+		_auton_selector++;
 	}
 
-	return nLCDButtons;
+	return _auton_selector % 7;
 }
 
 task lcd_control() {
@@ -38,7 +47,7 @@ task lcd_control() {
 			// sprintf(backupBattery, "%1.2f%c", BackupBatteryLevel/1000.0, 'V');    //Build the value to be displayed
 			// displayNextLCDString(backupBattery);
 		//} else if (screen_position == 1) {
-			int mode = get_auton_mode();
+			int mode = _get_lcd_input();
 			if (mode == 0) {
 				displayLCDString(1, 0, "Auton Off");
 			} else if (mode == 1) {
