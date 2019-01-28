@@ -72,13 +72,11 @@ void clawUp() {
 void clawDown() {
 	motor(Claw) = -80;
 }
-void intakeIn(int time) {
+void intakeIn() {
 	motor(Intake) = 120;
-	wait1Msec(time);
 }
-void intakeFlip(int time) {
+void intakeFlip() {
 	motor(Intake) = -120;
-	wait1Msec(time);
 }
 void shoot() {
 	motor(Gun) = 127;
@@ -96,7 +94,7 @@ void turn(int degrees) {
 }
 void turnCounterClock(int degrees) {
 	int speed = 50;
-	int fullRotationTime = 5200;
+	int fullRotationTime = 4450;
 	int time = fullRotationTime/360*degrees;
 	motor(LeftRear) = -speed;
 	motor(RightRear) = speed;

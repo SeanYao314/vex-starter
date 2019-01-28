@@ -8,8 +8,9 @@ void autonSkills1() {
 
 	//push flag
 	chassisBackwards(127);
+	intakeIn();
 	wait1Msec(2500);
-	stopChassis();
+	stopall(100);
 
 	// chassisForward(75);
 	// wait1Msec(1000);
@@ -32,7 +33,7 @@ void autonSkills1() {
 	// turnCounterClock(45);
 
 	chassisForward(127);
-	wait1Msec(4000);
+	wait1Msec(3000);
 	stopChassis();
 
 	turn(90);
@@ -41,7 +42,8 @@ void autonSkills1() {
 	wait1Msec(500);
 	stopChassis();
 
-	chassisBackwards(127)
-	wait1Msec(5000);
+	chassisBackwards(127);
+	intakeIn();
+	wait1Msec(4500);
 	stopall(500);
 }

@@ -1,4 +1,10 @@
 void autonSkills2() {
+	shoot();
+	wait1msec(3000);
+	stopGun();
+
+	turn(90);
+
 	chassisBackwards(50);
 	wait1Msec(1500);
 	turnCounterClock(90);
@@ -10,6 +16,7 @@ void autonSkills2() {
 
 	wait1Msec(800);
 	chassisBackwards(127);
-	wait1Msec(5000);
-	stopChassis();
+	intakeIn();
+	wait1Msec(4500);
+	stopall(500);
 }

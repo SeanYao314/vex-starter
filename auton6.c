@@ -1,10 +1,4 @@
-void auton2() {
-	shoot();
-	wait1msec(4000);
-	stopGun();
-
-	turn(90);
-
+void auton6() {
 	chassisBackwards(50);
 	wait1Msec(1500);
 	turnCounterClock(90);

@@ -42,7 +42,7 @@
 #include "auton_basic.c"
 #include "auton1.c"
 #include "auton2.c"
-#include "auton3.c"
+#include "auton3.c" 
 #include "auton4.c"
 #include "autonSkills1.c"
 #include "autonSkills2.c"
@@ -79,21 +79,37 @@ task autonomous() {
   }
 }
 
-task usercontrol() {
+void startUserControlTasks() {
   startTask(chassis_control);
   startTask(gun_control);
   startTask(tower_control);
   startTask(intake_control);
   startTask(claw_control);
   startTask(lcd_control);
+}
+
+void stopUserControlTasks() {
+  stopTask(chassis_control);
+  stopTask(gun_control);
+  stopTask(tower_control);
+  stopTask(intake_control);
+  stopTask(claw_control);
+  stopTask(lcd_control);
+}
+
+task usercontrol() {
+  startUserControlTasks();
 
   while (true)
   {
     if(vexRT(Btn7U) == 1 && vexRt(Btn7D) == 1) {
+      stopUserControlTasks();
+      wait1Msec(100);
       onebuttonauton();
+      startUserControlTasks();
     }
 
-    printDebug();
+    //printDebug();
     wait1Msec(100);
   }
 }
