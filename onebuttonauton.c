@@ -1,25 +1,23 @@
 void onebuttonauton() {
 	shoot();
-	wait1Msec(5000);
+	wait1Msec(2500);
 	stopGun();
 
-	turnCounterClock(90);
+	GyroTurnCounterClockwise(90);
+	pause();
 
-	chassisBackwards(100);
-	wait1Msec(3000);
-	stopChassis();
+	forwardEncoder(25, 127);
+	pause();
 
-	chassisForward(75);
-	wait1Msec(1000);
-	stopChassis();
+	backwardEncoder(5, 100);
+	GyroTurnClockwise(135)
+	pause();
 
-	turnCounterClock(45);
-	clawUp();
-	wait1Msec(2000);
-	stopClaw();
+	backwardEncoder(6, 127);
+	pause();
 
-	chassisForward(50);
 	clawDown();
-	wait1Msec(1000);
-	stopClaw();
+	wait1Msec(2000);
+	stopclaw();
+
 }
