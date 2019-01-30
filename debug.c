@@ -1,4 +1,7 @@
 void printDebug() {
-	writeDebugStreamLine("autonmode => %d", get_auton_mode());
+	writeDebugStreamLine("Gyro => %d", getOrientation());
+	writeDebugStreamLine("WheelEncoder => %d", getWheelEncoder());
+
+	writeDebugStreamLine("------------------");
 }
 	

@@ -4,7 +4,7 @@ void auton3() {
 	wait1Msec(2250);
 	stopGun();
 
-	turnCounterClock(80);
+	gyroTurnCounterClockwise(80);
 	wait1Msec(100);
 
 	//push flag
@@ -37,7 +37,7 @@ void auton3() {
 	wait1Msec(3000);
 	stopChassis();
 
-	turnCounterClock(90);
+	gyroTurnCounterClockwise(90);
 
 	chassisForward(127);
 	wait1Msec(250);

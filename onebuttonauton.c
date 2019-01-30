@@ -14,12 +14,12 @@ void onebuttonauton() {
 	stopChassis();
 
 	turnCounterClock(45);
-	clawDown();
+	clawUp();
 	wait1Msec(2000);
 	stopClaw();
 
 	chassisForward(50);
-	clawUp();
+	clawDown();
 	wait1Msec(1000);
 	stopClaw();
 }
