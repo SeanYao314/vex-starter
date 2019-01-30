@@ -1,22 +1,57 @@
 void autonSkills2() {
-	shoot();
-	wait1msec(3000);
-	stopGun();
+	// //shoot
+	// shoot();
+	// wait1Msec(2000);
+	// stopGun();
 
-	turn(90);
+	gyroTurnCounterClockwise(95);
+	pause();
 
-	chassisBackwards(50);
-	wait1Msec(1500);
-	turnCounterClock(90);
-	stopChassis();
-
-	chassisForward(90);
-	wait1Msec(800);
-	stopChassis();
-
-	wait1Msec(800);
-	chassisBackwards(127);
+	//push flag
 	intakeIn();
-	wait1Msec(4500);
-	stopall(500);
+	forwardEncoder(21, 127);
+	stopall(100);
+
+	pause();
+	pause();
+
+	backwardEncoder(21, 127);
+	pause();
+
+	gyroTurnClockwise(90);
+	pause();
+
+	chassisBackwards(100);
+	wait1Msec(500);
+
+	intakeFlip();
+	forwardEncoder(20, 127);
+	wait1Msec(2500);
+	stopIntake();
+	wait1Msec(20);
+	stopIntake();
 }
+
+
+// void autonSkills2() {
+// 	shoot();
+// 	wait1msec(3000);
+// 	stopGun();
+
+// 	turn(90);
+
+// 	chassisBackwards(50);
+// 	wait1Msec(1500);
+// 	turnCounterClock(90);
+// 	stopChassis();
+
+// 	chassisForward(90);
+// 	wait1Msec(800);
+// 	stopChassis();
+
+// 	wait1Msec(800);
+// 	chassisBackwards(127);
+// 	intakeIn();
+// 	wait1Msec(4500);
+// 	stopall(500);
+// }

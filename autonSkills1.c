@@ -1,49 +1,106 @@
 void autonSkills1() {
 	//shoot
 	shoot();
-	wait1Msec(3000);
+	wait1Msec(2000);
 	stopGun();
 
-	turnCounterClock(90);
+	gyroTurnCounterClockwise(95);
+	pause();
 
 	//push flag
-	chassisBackwards(127);
 	intakeIn();
+	chassisForward(127);
 	wait1Msec(2500);
 	stopall(100);
 
-	// chassisForward(75);
-	// wait1Msec(1000);
-	// stopChassis();
+	//pause();
+	pause();
 
-	// turnCounterClock(45);
-	// clawDown();
-	// wait1Msec(2000);
-	// stopClaw();
+	backwardEncoderAdaptiveSpeed(5, 50, false);
+	pause();
 
-	// chassisForward(50);
-	// wait1Msec(500);
-	// stopChassis();
-	// clawUp(1000);
-	// wait1Msec(3000);
+	gyroTurnClockwise(90);
+	pause();
 
-	// chassisBackwards(50);
-	// wait1Msec(500);
+	//bang the wall
+	chassisBackwards(100);
+	wait1Msec(500);
+	stopall(100);
 
-	// turnCounterClock(45);
+	pause();
 
-	chassisForward(127);
-	wait1Msec(3000);
-	stopChassis();
+	//move to middle flag pole
+	forwardEncoder(22, 127);
 
-	turn(90);
+	pause();
+
+	gyroTurnCounterClockwise(92);
+	pause();
 
 	chassisForward(100);
-	wait1Msec(500);
-	stopChassis();
+	wait1Msec(1000);
+	stopall(100);
 
-	chassisBackwards(127);
+	pause();
+
+	backwardEncoderAdaptiveSpeed(5, 50, false);
+	pause();
+
+	gyroTurnClockwise(90);
+	pause();
+
+	//move to last flag pole
+	forwardEncoder(20, 127);
+	pause();
+
+	gyroTurnCounterClockwise(92);
+	pause();
+
+	chassisForward(100);
+	wait1Msec(1000);
+	stopall(100);
+
+	pause();
+
+	backwardEncoderAdaptiveSpeed(5, 50, false);
+	pause();
+
+	gyroTurnClockwise(90);
+	pause();
+
+	//bang the wall
+	chassisForward(127);
+	wait1Msec(1500);
+	stopall(100);
+
+	pause();
+
+	backwardEncoderAdaptiveSpeed(2, 50, false);
+	pause();
+
+	gyroTurnClockwise(90);
+	pause();
+
+	chassisForward(127);
+	wait1Msec(5300);
+	stopall(100);
+	pause();
+
+	backwardEncoder(22, 127);
+	pause();
+
+	gyroTurnClockwise(90);
+	pause();
+
+	//bang the wall
+	chassisBackwards(100);
+	wait1Msec(700);
+	stopall(100);
+
+	pause();
+
 	intakeIn();
-	wait1Msec(4500);
+	chassisForward(127);
+	wait1Msec(4700);
 	stopall(500);
 }

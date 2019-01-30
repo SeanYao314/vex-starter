@@ -58,11 +58,11 @@ void clawDown() {
 }
 
 void intakeIn() {
-	motor(Intake) = 120;
+	motor(Intake) = -120;
 }
 
 void intakeFlip() {
-	motor(Intake) = -120;
+	motor(Intake) = 120;
 }
 
 void shoot() {
@@ -100,19 +100,30 @@ void turnCounterClock(int degrees) {
 	stopChassis();
 }
 
+int adaptiveTurning(int speed, int degree) {
+	int delta = abs(degree);
+	if (delta < 45) {
+		return 30;
+	} else if (delta < 15) {
+		return 10;
+	}
+
+	return speed;
+}
+
 void gyroTurnClockwise(int degrees) {
 	writeDebugStreamLine("turning clockwise.");
-	int currentSetting = SensorValue[Gyro];
+	int currentSetting = getOrientation();
 	//writeDebugStreamLine("currentSetting => %d", currentSetting);
 	int targetSetting = (currentSetting - 10* degrees) % 3600;
 	//writeDebugStreamLine("targetSetting => %d", targetSetting);
-	int delta = abs(targetSetting - SensorValue[Gyro]);
+	int delta = abs(targetSetting - getOrientation());
 
 	while(true) {
-		int newDelta = abs(targetSetting - SensorValue[Gyro]);
+		int newDelta = abs(targetSetting - getOrientation());
 
-		if (newDelta <= delta) {
-			rotateSpeed(-50);
+		if (newDelta <= delta || delta > 200) {
+			rotateSpeed(-adaptiveTurning(50, newDelta / 10));
 			delta = newDelta;
 			wait1Msec(10);
 		} else {
@@ -125,17 +136,17 @@ void gyroTurnClockwise(int degrees) {
 
 void gyroTurnCounterClockwise(int degrees) {
 	writeDebugStreamLine("turning counter clockwise.");
-	int currentSetting = SensorValue[Gyro];
+	int currentSetting = getOrientation();
 	//writeDebugStreamLine("currentSetting => %d", currentSetting);
 	int targetSetting = (currentSetting + 10* degrees) % 3600;
 	//writeDebugStreamLine("targetSetting => %d", targetSetting);
 
-	int delta = abs(targetSetting - SensorValue[Gyro]);
+	int delta = abs(targetSetting - getOrientation());
 	while (true) {
-		int newDelta = abs(targetSetting - SensorValue[Gyro]);
+		int newDelta = abs(targetSetting - getOrientation());
 
-		if (newDelta <= delta) {
-			rotateSpeed(50);
+		if (newDelta <= delta || delta > 200) {
+			rotateSpeed(adaptiveTurning(50, newDelta / 10));
 			delta = newDelta;
 			wait1Msec(10);
 		} else {
@@ -150,13 +161,13 @@ int adaptiveSpeed(int speed, int matDistance) {
 	if (matDistance < 5) {
 		return 20;
 	} else if (matDistance < 3) {
-		return 10;
+		return 15;
 	}
 
 	return speed;
 }
 
-void forwardEncoder(int matDistance, int speed) {
+void forwardEncoderAdaptiveSpeed(int matDistance, int speed, bool usingAdaptiveSpeed) {
 	writeDebugStreamLine("move forward for %d mat distance.", matDistance);
 	resetWheelEncoder();
 	const int matEncoderRatio = 112;
@@ -168,9 +179,47 @@ void forwardEncoder(int matDistance, int speed) {
 	while (true) {
 		int newDelta = abs(targetSetting - getWheelEncoder());
 
-		if (newDelta <= delta) {
+		if (newDelta <= delta || delta > 200) {
 			writeDebugStreamLine("delta = %d, newDelta = %d", delta, newDelta);
-			chassisForward(adaptiveSpeed(speed, newDelta / matEncoderRatio));
+			if (usingAdaptiveSpeed) {
+				chassisForward(adaptiveSpeed(speed, newDelta / matEncoderRatio));
+			} else {
+				chassisForward(speed);
+			}
+			delta = newDelta;
+			wait1Msec(10);
+		} else {
+			writeDebugStreamLine("delta = %d, newDelta = %d, stopping the chassis.", delta, newDelta);
+			writeDebugStreamLine("final encoder value is %d before stopping.", getWheelEncoder());
+			stopChassis();
+			break;
+		}
+	}	
+}
+
+void forwardEncoder(int matDistance, int speed) {
+	forwardEncoderAdaptiveSpeed(matDistance, speed, true);
+}
+
+void backwardEncoderAdaptiveSpeed(int matDistance, int speed, bool usingAdaptiveSpeed) {
+	writeDebugStreamLine("move backwards for %d mat distance.", matDistance);
+	resetWheelEncoder();
+	const int matEncoderRatio = -112;
+	int currentSetting = getWheelEncoder();
+	int targetSetting = matDistance * matEncoderRatio;
+	writeDebugStreamLine("currentSetting = %d, targetSetting = %d", currentSetting, targetSetting);
+
+	int delta = abs(targetSetting - getWheelEncoder());
+	while (true) {
+		int newDelta = abs(targetSetting - getWheelEncoder());
+
+		if (newDelta <= delta || delta > 200) {
+			writeDebugStreamLine("delta = %d, newDelta = %d", delta, newDelta);
+			if (usingAdaptiveSpeed) {
+				chassisBackwards(adaptiveSpeed(speed, abs(newDelta / matEncoderRatio));
+			} else {
+				chassisBackwards(speed);
+			}
 			delta = newDelta;
 			wait1Msec(10);
 		} else {
@@ -183,28 +232,9 @@ void forwardEncoder(int matDistance, int speed) {
 }
 
 void backwardEncoder(int matDistance, int speed) {
-	writeDebugStreamLine("move backwards for %d mat distance.", matDistance);
-	resetWheelEncoder();
-	const int matEncoderRatio = -112;
-	int currentSetting = getWheelEncoder();
-	int targetSetting = matDistance * matEncoderRatio;
-	writeDebugStreamLine("currentSetting = %d, targetSetting = %d", currentSetting, targetSetting);
-
-	int delta = abs(targetSetting - getWheelEncoder());
-	while (true) {
-		int newDelta = abs(targetSetting - getWheelEncoder());
-
-		if (newDelta <= delta) {
-			writeDebugStreamLine("delta = %d, newDelta = %d", delta, newDelta);
-			chassisBackwards(adaptiveSpeed(speed, abs(newDelta / matEncoderRatio));
-			delta = newDelta;
-			wait1Msec(10);
-		} else {
-			writeDebugStreamLine("delta = %d, newDelta = %d, stopping the chassis.", delta, newDelta);
-			writeDebugStreamLine("final encoder value is %d before stopping.", getWheelEncoder());
-			stopChassis();
-			break;
-		}
-	}
+	backwardEncoderAdaptiveSpeed(matDistance, speed, true);
 }
 
+void pause() {
+	wait1Msec(200);
+}
