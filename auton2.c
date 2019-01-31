@@ -1,21 +1,23 @@
 void auton2() {
+	//shoot
 	shoot();
-	wait1msec(4000);
+	wait1msec(2500);
 	stopGun();
+	pause();
 
-	turn(90);
+	gyroTurnClockwise(90);
 
-	chassisBackwards(50);
-	wait1Msec(1500);
-	turnCounterClock(90);
+	forwardEncoder(11, 127);
+	wait1Msec(100);
+	gyroTurnCounterClockwise(90);
 	stopChassis();
 
-	chassisForward(90);
+	chassisBackwards(90);
 	wait1Msec(800);
 	stopChassis();
 
 	wait1Msec(800);
-	chassisBackwards(127);
+	chassisForward(127);
 	wait1Msec(3000);
 	stopChassis();
 }

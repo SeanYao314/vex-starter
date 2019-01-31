@@ -6,13 +6,13 @@ void stopChassis() {
 	wait1Msec(100);
 }
 
-// void stopTower() {
-// 	motor(towerUp) = 0;
-// 	motor(towerDown) = 0;
-// }
-// void stopIntake() {
-// 	motor(Intake) = 0;
-// }
+void stopTower() {
+	motor(tower1) = 0;
+	motor(tower2) = 0;
+}
+void stopIntake() {
+	motor(Intake) = 0;
+}
 
 void stopClaw() {
 	motor(Claw) = 0;
@@ -27,13 +27,14 @@ void stopall(int time) {
 	motor(RightRear) = 0;
 	motor(LeftFront) = 0;
 	motor(RightFront) = 0;
-	motor(towerUp) = 0;
-	motor(towerDown) = 0;
+	motor(tower1) = 0;
+	motor(tower2) = 0;
 	motor(Intake) = 0;
 	motor(Claw) = 0;
 	motor(Gun) = 0;
 	wait1Msec(time);
 }
+
 
 void chassisForward(int speed) {
 	motor(LeftRear) = speed;
@@ -98,6 +99,11 @@ void turnCounterClock(int degrees) {
 	motor(RightFront) = speed;
 	wait1Msec(time);
 	stopChassis();
+}
+
+void towerDown() {
+	motor(tower1) = -20;
+	motor(tower2) = -20;
 }
 
 int adaptiveTurning(int speed, int degree) {
@@ -194,7 +200,7 @@ void forwardEncoderAdaptiveSpeed(int matDistance, int speed, bool usingAdaptiveS
 			stopChassis();
 			break;
 		}
-	}	
+	}
 }
 
 void forwardEncoder(int matDistance, int speed) {
@@ -236,5 +242,7 @@ void backwardEncoder(int matDistance, int speed) {
 }
 
 void pause() {
+	towerDown();
 	wait1Msec(200);
+	stopTower();
 }

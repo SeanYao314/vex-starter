@@ -1,6 +1,6 @@
 int get_auton_mode() {
 	int potentiometer = SensorValue[AutonSelector];
-	int mode = potentiometer / 585;
+	int mode = potentiometer;
 	return mode;
 }
 
@@ -24,4 +24,8 @@ int getWheelEncoder() {
 
 void resetWheelEncoder() {
 	SensorValue[WheelEncoder] = 0;
+}
+
+int getPotentiometer() {
+	return SensorValue[potentiometer];
 }

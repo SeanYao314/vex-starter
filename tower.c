@@ -1,8 +1,8 @@
 int _tower_motor_threshold = 50;
 
 void _move_tower(int speed) {
-	motor(TowerUp) = speed;
-	motor(TowerDown) = speed;
+	motor(Tower1) = speed;
+	motor(Tower2) = speed;
 }
 
 void _stop_tower() {

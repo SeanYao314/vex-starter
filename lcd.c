@@ -39,7 +39,7 @@ task lcd_control() {
 		//if (screen_position == 0) {
 			//Display the Primary Robot battery voltage
 			displayLCDString(0, 0, "Primary: ");
-			sprintf(mainBattery, "%1.2f%c", nImmediateBatteryLevel/1000.0,'V'); //Build the value to be displayed
+			sprintf(mainBattery, "%1.2f%c", nImmediateBatteryLevel/1000.00,'V'); //Build the value to be displayed
 			displayNextLCDString(mainBattery);
 			 
 			// //Display the Backup battery voltage
@@ -51,17 +51,17 @@ task lcd_control() {
 			if (mode == 0) {
 				displayLCDString(1, 0, "Auton Off");
 			} else if (mode == 1) {
-				displayLCDString(1, 0, "Auton Blue 1");
+				displayLCDString(1, 0, "Auton Blue 5pts");
 			} else if (mode == 2) {
-				displayLCDString(1, 0, "Auton Red 1");
+				displayLCDString(1, 0, "Auton Red 5pts");
 			} else if (mode == 3) {
-				displayLCDString(1, 0, "Auton Blue 2");
+				displayLCDString(1, 0, "Auton Blue 6pts");
 			} else if (mode == 4) {
-				displayLCDString(1, 0, "Auton Red 2");
+				displayLCDString(1, 0, "Auton Red 6pts");
 			} else if (mode == 5) {
-				displayLCDString(1, 0, "Auton Blue Skill");
+				displayLCDString(1, 0, "Auton Skills 12pts");
 			} else if (mode == 6) {
-				displayLCDString(1, 0, "Auton Red Skill");
+				displayLCDString(1, 0, "Auton Skills 8pts");
 			} else {
 				displayLCDString(1, 0, "Unknown");
 			}

@@ -1,10 +1,11 @@
 #pragma config(I2C_Usage, I2C1, i2cSensors)
 #pragma config(Sensor, in1,    Gyro,           sensorGyro)
+#pragma config(Sensor, in2,    potentiometer,  sensorPotentiometer)
 #pragma config(Sensor, dgtl1,  AutonSelector,  sensorTouch)
 #pragma config(Sensor, I2C_1,  WheelEncoder,   sensorQuadEncoderOnI2CPort,    , AutoAssign )
 #pragma config(Motor,  port1,           Gun,           tmotorVex393_HBridge, openLoop)
-#pragma config(Motor,  port2,           TowerUp,       tmotorVex393_MC29, openLoop)
-#pragma config(Motor,  port3,           TowerDown,     tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port2,           Tower1,        tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port3,           Tower2,        tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port4,           Claw,          tmotorVex393_MC29, openLoop, reversed)
 #pragma config(Motor,  port5,           Intake,        tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port6,           RightFront,    tmotorVex393_MC29, openLoop, reversed)
@@ -41,6 +42,7 @@
 #include "tower.c"
 #include "intake.c"
 #include "claw.c"
+//#include "claw1.c"
 #include "lcd.c"
 #include "auton_basic.c"
 #include "auton1.c"

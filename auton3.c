@@ -4,13 +4,13 @@ void auton3() {
 	wait1Msec(2250);
 	stopGun();
 
-	gyroTurnCounterClockwise(80);
+	forwardEncoder(1, 127);
+	gyroTurnCounterClockwise(90);
 	wait1Msec(100);
 
 	//push flag
-	chassisBackwards(127);
-	intakeFlip();
-	wait1Msec(2500);
+	intakeIn();
+	forwardEncoder(20, 127);
 	stopall(200);
 
 	// chassisForward(75);
@@ -33,13 +33,12 @@ void auton3() {
 
 	// turnCounterClock(45);
 
-	chassisForward(127);
-	wait1Msec(3000);
-	stopChassis();
+	backwardEncoder(32, 127);
+	pause();
 
 	gyroTurnCounterClockwise(90);
 
-	chassisForward(127);
+	chassisBackwards(127);
 	wait1Msec(250);
 	stopChassis();
 

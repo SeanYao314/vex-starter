@@ -3,8 +3,12 @@ void autonSkills1() {
 	shoot();
 	wait1Msec(2000);
 	stopGun();
+	pause();
 
-	gyroTurnCounterClockwise(95);
+	backwardEncoder(2, 127);
+	pause();
+
+	gyroTurnCounterClockwise(90);
 	pause();
 
 	//push flag
@@ -16,7 +20,7 @@ void autonSkills1() {
 	//pause();
 	pause();
 
-	backwardEncoderAdaptiveSpeed(5, 50, false);
+	backwardEncoderAdaptiveSpeed(5, 35, false);
 	pause();
 
 	gyroTurnClockwise(90);
@@ -43,7 +47,7 @@ void autonSkills1() {
 
 	pause();
 
-	backwardEncoderAdaptiveSpeed(5, 50, false);
+	backwardEncoderAdaptiveSpeed(5, 127, true);
 	pause();
 
 	gyroTurnClockwise(90);
@@ -56,13 +60,17 @@ void autonSkills1() {
 	gyroTurnCounterClockwise(92);
 	pause();
 
+	// clawDown();
+	pause();
 	chassisForward(100);
 	wait1Msec(1000);
 	stopall(100);
 
 	pause();
 
-	backwardEncoderAdaptiveSpeed(5, 50, false);
+	backwardEncoderAdaptiveSpeed(5, 127, true);
+	// clawUp();
+	wait1Msec(2000);
 	pause();
 
 	gyroTurnClockwise(90);
@@ -81,12 +89,8 @@ void autonSkills1() {
 	gyroTurnClockwise(90);
 	pause();
 
-	chassisForward(127);
-	wait1Msec(5300);
+	forwardEncoder(26, 127);
 	stopall(100);
-	pause();
-
-	backwardEncoder(22, 127);
 	pause();
 
 	gyroTurnClockwise(90);

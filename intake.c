@@ -1,4 +1,3 @@
-
 int _intake_motor_speed = 120;
 
 task intake_control() {
