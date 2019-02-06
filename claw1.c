@@ -1,21 +1,23 @@
 int clawThreshold = 20;
+int clawspeed = 0;
 
 task claw1_control() {
 	while (true) {
 		if(abs(vexRt(Ch3Xmtr2)) > clawThreshold) {
 			motor(claw) = vexRt(Ch3Xmtr2)
 		} else if(abs(vexRt(Btn7UXmtr2)) == 1) {
-			while(true) {
-				if(getPotentiometer() < 2400) {
-					motor(claw) = 127;
-				} else if(getPotentiometer() > 2400) {
-					motor(claw) = -50;
-				} else {
-					motor(claw) = 0;
+			motor(claw) = clawspeed;
+			if(getPotentiometer() < 2250) {
+				clawspeed += 3;
+			} else if(getPotentiometer() > 2250) {
+				clawspeed -= 2;
+				if(clawspeed < 20) {
+					clawspeed = 30;
 				}
-			}
+			} 
 		} else {
 			motor(claw) = 0;
 		}
+		wait1msec(100);
 	}
 }

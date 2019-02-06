@@ -1,15 +1,40 @@
 void auton6() {
-	chassisBackwards(50);
-	wait1Msec(1500);
-	turnCounterClock(90);
-	stopChassis();
+	shoot();
+	wait1Msec(2250);
+	pause();
 
-	chassisForward(90);
-	wait1Msec(800);
-	stopChassis();
+	intakeIn();
+	forwardEncoder(16, 127);
+	stopGun();
+	pause();
 
-	wait1Msec(800);
+	forwardEncoder(1, 127);
+	wait1Msec(1200);
+
+	backwardEncoder(3, 127);
+
+	gyroTurnClockwise(4);
+	pause();
+
+	shoot();
+	wait1Msec(3500);
+	stopGun();
+	pause();
+
+	gyroTurnCounterClockwise(4);
+	pause();
+
+	backwardEncoder(1, 127);
+	pause();
+
+	gyroTurnCounterClockwise(90);
+	pause();
+
 	chassisBackwards(127);
-	wait1Msec(3000);
+	wait1Msec(1500);
 	stopChassis();
+
+	chassisForward(127);
+	wait1Msec(3200);
+	stopall(100);
 }

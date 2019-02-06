@@ -1,4 +1,5 @@
 
+
 int _gun_motor_speed = 127;
 
 bool is_gun_triggered() {
@@ -9,10 +10,8 @@ task gun_control() {
 	while (true) {
 		if (is_gun_triggered()) {
 			motor(Gun) = _gun_motor_speed;
-			motor(Gun2) = _gun_motor_speed;
 		} else {
-			motor(Gun) = 0;
-			motor(Gun2) = 0;																							
+			motor(Gun) = 0;																						
 		}
 		wait1Msec(100);
 	}

@@ -1,7 +1,7 @@
 void auton3() {
 	//shoot
 	shoot();
-	wait1Msec(2250);
+	wait1Msec(2700);
 	stopGun();
 
 	forwardEncoder(1, 127);
@@ -10,8 +10,8 @@ void auton3() {
 
 	//push flag
 	intakeIn();
-	forwardEncoder(20, 127);
-	stopall(200);
+	chassisForward(127);
+	wait1Msec(2750);
 
 	// chassisForward(75);
 	// wait1Msec(1000);
@@ -39,10 +39,10 @@ void auton3() {
 	gyroTurnCounterClockwise(90);
 
 	chassisBackwards(127);
-	wait1Msec(250);
+	wait1Msec(1050);
 	stopChassis();
 
-	chassisBackwards(127)
+	chassisForward(127)
 	intakeIn();
 	wait1Msec(3000);
 	stopall(500);

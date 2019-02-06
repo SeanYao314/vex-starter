@@ -22,7 +22,7 @@ int _get_lcd_input() {
 		_auton_selector++;
 	}
 
-	return _auton_selector % 7;
+	return _auton_selector % 9;
 }
 
 task lcd_control() {
@@ -58,9 +58,13 @@ task lcd_control() {
 				displayLCDString(1, 0, "Auton Blue 6pts");
 			} else if (mode == 4) {
 				displayLCDString(1, 0, "Auton Red 6pts");
-			} else if (mode == 5) {
+			} else if(mode == 5){
+				displayLCDString(1, 0, "Auton Blue 8pts");
+			} else if(mode == 6) {
+				displayLCDString(1, 0, "Auton Red 8pts");
+			} else if (mode == 7) {
 				displayLCDString(1, 0, "Auton Skills 12pts");
-			} else if (mode == 6) {
+			} else if (mode == 8) {
 				displayLCDString(1, 0, "Auton Skills 8pts");
 			} else {
 				displayLCDString(1, 0, "Unknown");

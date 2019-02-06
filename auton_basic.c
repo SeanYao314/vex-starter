@@ -8,7 +8,6 @@ void stopChassis() {
 
 void stopTower() {
 	motor(tower1) = 0;
-	motor(tower2) = 0;
 }
 void stopIntake() {
 	motor(Intake) = 0;
@@ -28,7 +27,6 @@ void stopall(int time) {
 	motor(LeftFront) = 0;
 	motor(RightFront) = 0;
 	motor(tower1) = 0;
-	motor(tower2) = 0;
 	motor(Intake) = 0;
 	motor(Claw) = 0;
 	motor(Gun) = 0;
@@ -103,15 +101,14 @@ void turnCounterClock(int degrees) {
 
 void towerDown() {
 	motor(tower1) = -20;
-	motor(tower2) = -20;
 }
 
 int adaptiveTurning(int speed, int degree) {
 	int delta = abs(degree);
 	if (delta < 45) {
-		return 30;
+		return 35;
 	} else if (delta < 15) {
-		return 10;
+		return 15;
 	}
 
 	return speed;
