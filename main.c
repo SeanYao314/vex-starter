@@ -67,6 +67,7 @@ void pre_auton() {
   resetGyroSensor();
   resetWheelEncoder();
 }
+
 task autonomous() {
   int mode = _get_lcd_input();
   if(mode == 1) {

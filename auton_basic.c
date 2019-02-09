@@ -160,7 +160,7 @@ void gyroTurnCounterClockwise(int degrees) {
 	}
 }
 
-int adaptiveSpeed(int speed, int matDistance) {
+int adaptiveSpeed(float speed, int matDistance) {
 	if (matDistance < 5) {
 		return 20;
 	} else if (matDistance < 3) {
@@ -170,7 +170,7 @@ int adaptiveSpeed(int speed, int matDistance) {
 	return speed;
 }
 
-void forwardEncoderAdaptiveSpeed(int matDistance, int speed, bool usingAdaptiveSpeed) {
+void forwardEncoderAdaptiveSpeed(float matDistance, int speed, bool usingAdaptiveSpeed) {
 	writeDebugStreamLine("move forward for %d mat distance.", matDistance);
 	resetWheelEncoder();
 	const int matEncoderRatio = 112;
@@ -200,11 +200,11 @@ void forwardEncoderAdaptiveSpeed(int matDistance, int speed, bool usingAdaptiveS
 	}
 }
 
-void forwardEncoder(int matDistance, int speed) {
+void forwardEncoder(float matDistance, int speed) {
 	forwardEncoderAdaptiveSpeed(matDistance, speed, true);
 }
 
-void backwardEncoderAdaptiveSpeed(int matDistance, int speed, bool usingAdaptiveSpeed) {
+void backwardEncoderAdaptiveSpeed(float matDistance, int speed, bool usingAdaptiveSpeed) {
 	writeDebugStreamLine("move backwards for %d mat distance.", matDistance);
 	resetWheelEncoder();
 	const int matEncoderRatio = -112;
@@ -234,7 +234,7 @@ void backwardEncoderAdaptiveSpeed(int matDistance, int speed, bool usingAdaptive
 	}
 }
 
-void backwardEncoder(int matDistance, int speed) {
+void backwardEncoder(float matDistance, int speed) {
 	backwardEncoderAdaptiveSpeed(matDistance, speed, true);
 }
 

@@ -1,21 +1,21 @@
 void autonSkills2() {
-	// //shoot
-	// shoot();
-	// wait1Msec(2000);
-	// stopGun();
+	//shoot
+	shoot();
+	wait1Msec(2000);
+	stopGun();
 
-	gyroTurnCounterClockwise(95);
+	gyroTurnCounterClockwise(90);
 	pause();
 
 	//push flag
-	intakeIn();
-	forwardEncoder(21, 127);
-	stopall(100);
+	// intakeIn();
+	// forwardEncoder(21, 127);
+	// stopall(100);
 
-	pause();
+	// pause();
 	pause();
 
-	backwardEncoder(21, 127);
+	backwardEncoder(11, 127);
 	pause();
 
 	gyroTurnClockwise(90);
@@ -24,12 +24,12 @@ void autonSkills2() {
 	chassisBackwards(100);
 	wait1Msec(500);
 
-	intakeFlip();
-	forwardEncoder(20, 127);
-	wait1Msec(2500);
-	stopIntake();
-	wait1Msec(20);
-	stopIntake();
+	intakeIn();
+	chassisForward(127);
+	wait1Msec(4700);
+	chassisBackwards(50);
+	pause();
+	stopall(2);
 }
 
 

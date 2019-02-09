@@ -6,7 +6,7 @@ void autonSkills1() {
 	stopGun();
 	pause();
 
-	backwardEncoder(2, 127);
+	backwardEncoder(1.75, 127);
 	pause();
 
 	gyroTurnCounterClockwise(90);
