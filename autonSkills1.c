@@ -89,9 +89,12 @@ void autonSkills1() {
 	gyroTurnClockwise(90);
 	pause();
 
-	forwardEncoder(27, 127);
+	chassisForward(127);
+	wait1Msec(5500);
 	stopall(100);
 	pause();
+
+	backwardEncoder(22, 127);
 
 	gyroTurnClockwise(90);
 	pause();
@@ -106,5 +109,8 @@ void autonSkills1() {
 	intakeIn();
 	chassisForward(127);
 	wait1Msec(4600);
+	pause();
+	chassisBackwards(50);
+	pause();
 	stopall(500);
 }

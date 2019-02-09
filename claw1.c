@@ -17,7 +17,7 @@ task claw1_control() {
 			} else if(getPotentiometer() > 2200 && getPotentiometer() < 2300) {
 				motor(claw) = 0;
 			}
-
+			
 		} else {
 			motor(claw) = 0;
 		}

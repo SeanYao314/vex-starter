@@ -1,11 +1,13 @@
 void auton6() {
+	forwardEncoder(1, 127);
 	shoot();
 	wait1Msec(2250);
 	pause();
 
 	intakeIn();
-	forwardEncoder(16, 127);
+	forwardEncoderAdaptiveSpeed(8, 127, false);
 	stopGun();
+	forwardEncoder(8, 127);
 	pause();
 
 	forwardEncoder(1, 127);
