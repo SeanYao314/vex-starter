@@ -121,11 +121,10 @@ void gyroTurnClockwise(int degrees) {
 	int targetSetting = (currentSetting - 10* degrees) % 3600;
 	//writeDebugStreamLine("targetSetting => %d", targetSetting);
 	int delta = abs(targetSetting - getOrientation());
+	int newDelta = delta;
 
 	while(true) {
-		int newDelta = abs(targetSetting - getOrientation());
-
-		if (newDelta <= delta || delta > 200) {
+		if (newDelta <= delta) {
 			rotateSpeed(-adaptiveTurning(50, newDelta / 10));
 			delta = newDelta;
 			wait1Msec(10);
@@ -134,6 +133,7 @@ void gyroTurnClockwise(int degrees) {
 			writeDebugStreamLine("stop turning");
 			break;
 		}
+		newDelta = abs(targetSetting - getOrientation());
 	}
 }
 
@@ -145,10 +145,9 @@ void gyroTurnCounterClockwise(int degrees) {
 	//writeDebugStreamLine("targetSetting => %d", targetSetting);
 
 	int delta = abs(targetSetting - getOrientation());
+	int newDelta = delta;
 	while (true) {
-		int newDelta = abs(targetSetting - getOrientation());
-
-		if (newDelta <= delta || delta > 200) {
+		if (newDelta <= delta) {
 			rotateSpeed(adaptiveTurning(50, newDelta / 10));
 			delta = newDelta;
 			wait1Msec(10);
@@ -157,13 +156,14 @@ void gyroTurnCounterClockwise(int degrees) {
 			writeDebugStreamLine("stop turning");
 			break;
 		}
+		newDelta = abs(targetSetting - getOrientation());
 	}
 }
 
 int adaptiveSpeed(float speed, int matDistance) {
-	if (matDistance < 5) {
+	if (matDistance < 5.0) {
 		return 20;
-	} else if (matDistance < 3) {
+	} else if (matDistance < 3.0) {
 		return 15;
 	}
 
@@ -175,7 +175,7 @@ void forwardEncoderAdaptiveSpeed(float matDistance, int speed, bool usingAdaptiv
 	resetWheelEncoder();
 	const int matEncoderRatio = 112;
 	int currentSetting = getWheelEncoder();
-	int targetSetting = matDistance * matEncoderRatio;
+	float targetSetting = matDistance * matEncoderRatio;
 	writeDebugStreamLine("currentSetting = %d, targetSetting = %d", currentSetting, targetSetting);
 
 	int delta = abs(targetSetting - getWheelEncoder());
@@ -209,7 +209,7 @@ void backwardEncoderAdaptiveSpeed(float matDistance, int speed, bool usingAdapti
 	resetWheelEncoder();
 	const int matEncoderRatio = -112;
 	int currentSetting = getWheelEncoder();
-	int targetSetting = matDistance * matEncoderRatio;
+	float targetSetting = matDistance * matEncoderRatio;
 	writeDebugStreamLine("currentSetting = %d, targetSetting = %d", currentSetting, targetSetting);
 
 	int delta = abs(targetSetting - getWheelEncoder());
