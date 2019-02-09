@@ -161,10 +161,10 @@ void gyroTurnCounterClockwise(int degrees) {
 }
 
 int adaptiveSpeed(float speed, int matDistance) {
-	if (matDistance < 5.0) {
-		return 20;
+	if (matDistance <= 5.0) {
+		return 35;
 	} else if (matDistance < 3.0) {
-		return 15;
+		return 25;
 	}
 
 	return speed;
@@ -194,6 +194,11 @@ void forwardEncoderAdaptiveSpeed(float matDistance, int speed, bool usingAdaptiv
 		} else {
 			writeDebugStreamLine("delta = %d, newDelta = %d, stopping the chassis.", delta, newDelta);
 			writeDebugStreamLine("final encoder value is %d before stopping.", getWheelEncoder());
+
+			//use brake
+			chassisBackwards(speed);
+			wait1Msec(10);
+
 			stopChassis();
 			break;
 		}
@@ -228,6 +233,11 @@ void backwardEncoderAdaptiveSpeed(float matDistance, int speed, bool usingAdapti
 		} else {
 			writeDebugStreamLine("delta = %d, newDelta = %d, stopping the chassis.", delta, newDelta);
 			writeDebugStreamLine("final encoder value is %d before stopping.", getWheelEncoder());
+
+			//use brake
+			chassisForward(speed);
+			wait1Msec(10);
+
 			stopChassis();
 			break;
 		}
