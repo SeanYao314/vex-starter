@@ -1,4 +1,6 @@
 void auton1() {
+	forward(1, 1);
+	pause();
 	shoot();
 	wait1Msec(2500);
 	stopGun();
@@ -6,14 +8,14 @@ void auton1() {
 
 	GyroTurnClockwise(90);
 
-	forwardEncoder(12, 127);
+	forwardEncoder(11.8, 127);
 	pause();
 
 	GyroTurnClockwise(90);
 	pause();
 
 	chassisBackwards(127);
-	wait1Msec(1000);
+	wait1Msec(900);
 	stopChassis();
 	pause();
 

@@ -100,7 +100,7 @@ void turnCounterClock(int degrees) {
 }
 
 void towerDown() {
-	motor(tower1) = -20;
+	motor(tower1) = -70;
 }
 
 int adaptiveTurning(int speed, int degree) {
@@ -124,11 +124,16 @@ void gyroTurnClockwise(int degrees) {
 	int newDelta = delta;
 
 	while(true) {
-		if (newDelta <= delta) {
+		if (newDelta <= delta || newDelta > 600) {
 			rotateSpeed(-adaptiveTurning(50, newDelta / 10));
 			delta = newDelta;
 			wait1Msec(10);
 		} else {
+
+			//use brake
+			rotateSpeed(40);
+			wait1Msec(10);
+
 			rotateSpeed(0);
 			writeDebugStreamLine("stop turning");
 			break;
@@ -147,11 +152,15 @@ void gyroTurnCounterClockwise(int degrees) {
 	int delta = abs(targetSetting - getOrientation());
 	int newDelta = delta;
 	while (true) {
-		if (newDelta <= delta) {
+		if (newDelta <= delta || newDelta > 600) {
 			rotateSpeed(adaptiveTurning(50, newDelta / 10));
 			delta = newDelta;
 			wait1Msec(10);
 		} else {
+			//use brake
+			rotateSpeed(-40);
+			wait1Msec(10);
+
 			rotateSpeed(0);
 			writeDebugStreamLine("stop turning");
 			break;
@@ -197,7 +206,7 @@ void forwardEncoderAdaptiveSpeed(float matDistance, int speed, bool usingAdaptiv
 
 			//use brake
 			chassisBackwards(speed);
-			wait1Msec(10);
+			wait1Msec(30);
 
 			stopChassis();
 			break;
@@ -236,7 +245,7 @@ void backwardEncoderAdaptiveSpeed(float matDistance, int speed, bool usingAdapti
 
 			//use brake
 			chassisForward(speed);
-			wait1Msec(10);
+			wait1Msec(30);
 
 			stopChassis();
 			break;

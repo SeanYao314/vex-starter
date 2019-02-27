@@ -2,60 +2,57 @@ void autonSkills1() {
 	forwardEncoder(1, 1)
 	//shoot
 	shoot();
-	wait1Msec(2100);
+	wait1Msec(2350);
 	stopGun();
 	pause();
 
-	backwardEncoder(1.75, 127);
+
+	intakeIn();
+	forwardEncoder(17, 127);
+	wait1Msec(2400);
+	pause();
+	stopIntake();
+	intakeFlip();
+	forwardEncoder(5, 127);
+	stopIntake();
+	backwardEncoder(1.85, 127);
+	pause();
+
+	// intakeFlip();
+	// forwardEncoder(16, 127);
+	// wait1Msec(300);
+	// stopIntake();
+	// intakeIn();
+	// wait1Msec(2400);
+	// forwardEncoder(4, 127);
+	// stopall(10);
+
+	shoot();
+	wait1Msec(2100);
+	stopGun();
+	backwardEncoder(2.06, 127);
+
+	//move to middle flag pole
 	pause();
 
 	gyroTurnCounterClockwise(90);
 	pause();
 
-	//push flag
 	intakeIn();
-	chassisForward(127);
-	wait1Msec(2500);
-	stopall(100);
-
-	//pause();
-	pause();
-
-	backwardEncoderAdaptiveSpeed(5, 35, true);
-	pause();
-
-	gyroTurnClockwise(90);
-	pause();
-
-	//bang the wall
-	chassisBackwards(100);
-	wait1Msec(500);
-	stopall(100);
-
-	pause();
-
-	//move to middle flag pole
-	forwardEncoder(22, 127);
-
-	pause();
-
-	gyroTurnCounterClockwise(92);
-	pause();
-
 	chassisForward(100);
-	wait1Msec(1000);
+	wait1Msec(2300);
 	stopall(100);
 
 	pause();
 
-	backwardEncoderAdaptiveSpeed(6, 127, true);
+	backwardEncoderAdaptiveSpeed(5.2, 127, true);
 	pause();
 
 	gyroTurnClockwise(90);
 	pause();
 
 	//move to last flag pole
-	forwardEncoder(20, 127);
+	forwardEncoder(20.6, 127);
 	pause();
 
 	gyroTurnCounterClockwise(92);
@@ -89,15 +86,19 @@ void autonSkills1() {
 	gyroTurnClockwise(90);
 	pause();
 
+	/* vvvvvvvvvvvvv this section move the chassis all the way to the wall, then com back vvvvvvv **/
 	chassisForward(127);
-	wait1Msec(5500);
+	intakeIn();
+	wait1Msec(5000);
+	
 	stopall(100);
 	pause();
 
-	backwardEncoder(22, 127);
+	backwardEncoder(21.55, 127);
 
 	gyroTurnClockwise(90);
 	pause();
+	/*^^^^^^^^^ this section move the chassis all the way to the wall, then com back ^^^^^^^^^ **/
 
 	//bang the wall
 	chassisBackwards(100);
@@ -108,9 +109,9 @@ void autonSkills1() {
 
 	intakeIn();
 	chassisForward(127);
-	wait1Msec(4600);
+	wait1Msec(4530);
 	pause();
 	chassisBackwards(50);
-	pause();
-	stopall(500);
+	wait1Msec(100);
+	stopall(10);
 }

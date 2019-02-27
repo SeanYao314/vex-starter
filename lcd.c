@@ -22,7 +22,7 @@ int _get_lcd_input() {
 		_auton_selector++;
 	}
 
-	return _auton_selector % 9;
+	return _auton_selector % 11;
 }
 
 task lcd_control() {
@@ -51,21 +51,25 @@ task lcd_control() {
 			if (mode == 0) {
 				displayLCDString(1, 0, "Auton Off");
 			} else if (mode == 1) {
-				displayLCDString(1, 0, "Auton Blue 5pts");
+				displayLCDString(1, 0, "Blue 5pts");
 			} else if (mode == 2) {
-				displayLCDString(1, 0, "Auton Red 5pts");
+				displayLCDString(1, 0, "Red 5pts");
 			} else if (mode == 3) {
-				displayLCDString(1, 0, "Auton Blue 6pts");
+				displayLCDString(1, 0, "Blue 6pts");
 			} else if (mode == 4) {
-				displayLCDString(1, 0, "Auton Red 6pts");
+				displayLCDString(1, 0, "Red 6pts");
 			} else if(mode == 5){
-				displayLCDString(1, 0, "Auton Blue 8pts");
+				displayLCDString(1, 0, "Blue 8pts");
 			} else if(mode == 6) {
-				displayLCDString(1, 0, "Auton Red 8pts");
+				displayLCDString(1, 0, "Red 8pts");
 			} else if (mode == 7) {
-				displayLCDString(1, 0, "Auton Skills 12pts");
+				displayLCDString(1, 0, "Blue 5pts Back");
 			} else if (mode == 8) {
-				displayLCDString(1, 0, "Auton Skills 8pts");
+				displayLCDString(1, 0, "Red 5pts Back");
+			} else if (mode == 9) {
+				displayLCDString(1, 0, "Skills 11pt");
+			} else if (mode == 10) {
+				displayLCDString(1, 0, "SKills 8pts");
 			} else {
 				displayLCDString(1, 0, "Unknown");
 			}

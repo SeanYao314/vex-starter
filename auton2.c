@@ -1,4 +1,6 @@
 void auton2() {
+	forwardEncoder(1, 1);
+	pause();
 	//shoot
 	shoot();
 	wait1msec(2500);

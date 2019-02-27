@@ -53,6 +53,8 @@
 #include "autonSkills2.c"
 #include "debug.c"
 #include "onebuttonauton.c"
+#include "auton7.c"
+#include "auton8.c"
 
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
@@ -83,8 +85,12 @@ task autonomous() {
   } else if(mode == 6) {
     auton6();
   } else if(mode == 7) {
-    autonSkills1();
+    auton7();
   } else if(mode == 8) {
+    auton8();
+  } else if(mode == 9) {
+    autonSkills1();
+  } else if(mode == 10) {
     autonSkills2();
   }
 }

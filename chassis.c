@@ -29,14 +29,14 @@ task chassis_control() {
 			left_speed = -30;
 			right_speed = -30;
 		} else if (vexRT(Btn8R) == 1) {
-			left_speed = 30;
-			right_speed = -30;
-		} else if (vexRT(Btn8L) == 1) {
 			left_speed = -30;
 			right_speed = 30;
+		} else if (vexRT(Btn8L) == 1) {
+			left_speed = 30;
+			right_speed = -30;
 		} else {
-			left_speed = (vexRT[Ch2] * _reverse_front + vexRT[Ch1]);
-			right_speed = (vexRT[Ch2] * _reverse_front - vexRT[Ch1]);
+			left_speed = (vexRT[Ch2] * _reverse_front - vexRT[Ch1]);
+			right_speed = (vexRT[Ch2] * _reverse_front + vexRT[Ch1]);
 		}
 
 		int max_input = max(abs(left_speed), abs(right_speed));

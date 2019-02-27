@@ -1,4 +1,6 @@
 void autonSkills2() {
+	forwardEncoder(1, 1);
+	pause();
 	//shoot
 	shoot();
 	wait1Msec(2000);
