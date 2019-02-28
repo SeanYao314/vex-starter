@@ -81,20 +81,20 @@ void turn(int degrees) {
 }
 
 void rotateSpeed(int speed) {
-	motor(LeftRear) = -speed;
-	motor(RightRear) = speed;
-	motor(LeftFront) = -speed;
-	motor(RightFront) = speed;
+	motor(LeftRear) = speed;
+	motor(RightRear) = -speed;
+	motor(LeftFront) = speed;
+	motor(RightFront) = -speed;
 }
 
 void turnCounterClock(int degrees) {
 	int speed = 50;
 	int fullRotationTime = 4450;
 	int time = fullRotationTime/360*degrees;
-	motor(LeftRear) = -speed;
-	motor(RightRear) = speed;
-	motor(LeftFront) = -speed;
-	motor(RightFront) = speed;
+	motor(LeftRear) = speed;
+	motor(RightRear) = -speed;
+	motor(LeftFront) = speed;
+	motor(RightFront) = -speed;
 	wait1Msec(time);
 	stopChassis();
 }
@@ -114,8 +114,8 @@ int adaptiveTurning(int speed, int degree) {
 	return speed;
 }
 
-void gyroTurnClockwise(int degrees) {
-	writeDebugStreamLine("turning clockwise.");
+void gyroTurnCounterClockwise(int degrees) {
+	writeDebugStreamLine("turning counter clockwise.");
 	int currentSetting = getOrientation();
 	//writeDebugStreamLine("currentSetting => %d", currentSetting);
 	int targetSetting = (currentSetting - 10* degrees) % 3600;
@@ -142,8 +142,8 @@ void gyroTurnClockwise(int degrees) {
 	}
 }
 
-void gyroTurnCounterClockwise(int degrees) {
-	writeDebugStreamLine("turning counter clockwise.");
+void gyroTurnClockwise(int degrees) {
+	writeDebugStreamLine("turning clockwise.");
 	int currentSetting = getOrientation();
 	//writeDebugStreamLine("currentSetting => %d", currentSetting);
 	int targetSetting = (currentSetting + 10* degrees) % 3600;
