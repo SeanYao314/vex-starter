@@ -55,21 +55,21 @@ task lcd_control() {
 			} else if (mode == 2) {
 				displayLCDString(1, 0, "Red 5pts");
 			} else if (mode == 3) {
-				displayLCDString(1, 0, "Blue 6pts");
+				displayLCDString(1, 0, "Bl Ft Np 4pts");
 			} else if (mode == 4) {
-				displayLCDString(1, 0, "Red 6pts");
+				displayLCDString(1, 0, "Rd Ft Np 6pts");
 			} else if(mode == 5){
-				displayLCDString(1, 0, "Blue 8pts");
+				displayLCDString(1, 0, "Bl Bk Np 5pts");
 			} else if(mode == 6) {
-				displayLCDString(1, 0, "Red 8pts");
+				displayLCDString(1, 0, "Rd Bk Np 5pts");
 			} else if (mode == 7) {
 				displayLCDString(1, 0, "Blue 5pts Back");
 			} else if (mode == 8) {
 				displayLCDString(1, 0, "Red 5pts Back");
 			} else if (mode == 9) {
-				displayLCDString(1, 0, "Skills 11pt");
+				displayLCDString(1, 0, "Skills 13pt");
 			} else if (mode == 10) {
-				displayLCDString(1, 0, "SKills 8pts");
+				displayLCDString(1, 0, "SKills 11pts");
 			} else {
 				displayLCDString(1, 0, "Unknown");
 			}

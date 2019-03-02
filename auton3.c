@@ -1,50 +1,21 @@
 void auton3() {
-	//shoot
-	shoot();
-	wait1Msec(2700);
-	stopGun();
-
-	forwardEncoder(1, 127);
-	gyroTurnCounterClockwise(90);
-	wait1Msec(100);
-
-	//push flag
-	intakeIn();
 	chassisForward(127);
-	wait1Msec(2750);
-
-	// chassisForward(75);
-	// wait1Msec(1000);
-	// stopChassis();
-
-	// turnCounterClock(45);
-	// clawDown();
-	// wait1Msec(2000);
-	// stopClaw();
-
-	// chassisForward(50);
-	// wait1Msec(500);
-	// stopChassis();
-	// clawUp(1000);
-	// wait1Msec(3000);
-
-	// chassisBackwards(50);
-	// wait1Msec(500);
-
-	// turnCounterClock(45);
-
-	backwardEncoder(32, 127);
+	wait1Msec(2500);
+	stopChassis();
 	pause();
 
-	gyroTurnCounterClockwise(90);
+	backwardEncoderAdaptiveSpeed(11, 127, false);
+	shoot();
+	backwardEncoder(12, 127);
+	pause();
 
-	chassisBackwards(127);
-	wait1Msec(1050);
-	stopChassis();
+	gyroTurnClockwise(90);
+	wait1Msec(1500);
+	stopGun();
 
-	chassisForward(127)
-	intakeIn();
-	wait1Msec(3000);
-	stopall(500);
+	backwardEncoder(15, 127);
+	pause();
+
+	forwardEncoder(7, 127);
+	stopall(200);
 }
-	

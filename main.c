@@ -1,3 +1,4 @@
+
 #pragma config(I2C_Usage, I2C1, i2cSensors)
 #pragma config(Sensor, in1,    Gyro,           sensorGyro)
 #pragma config(Sensor, in2,    potentiometer,  sensorPotentiometer)

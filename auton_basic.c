@@ -114,8 +114,8 @@ int adaptiveTurning(int speed, int degree) {
 	return speed;
 }
 
-void gyroTurnCounterClockwise(int degrees) {
-	writeDebugStreamLine("turning counter clockwise.");
+void gyroTurnClockwise(int degrees) {
+	writeDebugStreamLine("turning clockwise.");
 	int currentSetting = getOrientation();
 	//writeDebugStreamLine("currentSetting => %d", currentSetting);
 	int targetSetting = (currentSetting - 10* degrees) % 3600;
@@ -142,8 +142,8 @@ void gyroTurnCounterClockwise(int degrees) {
 	}
 }
 
-void gyroTurnClockwise(int degrees) {
-	writeDebugStreamLine("turning clockwise.");
+void gyroTurnCounterClockwise(int degrees) {
+	writeDebugStreamLine("turning counter clockwise.");
 	int currentSetting = getOrientation();
 	//writeDebugStreamLine("currentSetting => %d", currentSetting);
 	int targetSetting = (currentSetting + 10* degrees) % 3600;
