@@ -76,7 +76,8 @@ task autonomous() {
   if(mode == 1) {
     auton1();
   } else if(mode == 2) {
-    auton2();
+
+  auton2();
   } else if(mode == 3) {
     auton3();
   } else if(mode == 4) {

@@ -2,20 +2,20 @@ void autonSkills1() {
 	forwardEncoder(1, 1)
 	//shoot
 	shoot();
-	wait1Msec(2350);
+	wait1Msec(2750);
 	stopGun();
 	pause();
 
 
 	intakeIn();
 	forwardEncoder(17, 127);
-	wait1Msec(2400);
+	wait1Msec(3100);
 	pause();
 	stopIntake();
 	intakeFlip();
 	forwardEncoder(5, 127);
 	stopIntake();
-	backwardEncoder(1.85, 127);
+	backwardEncoder(1.95, 127);
 	pause();
 
 	// intakeFlip();
@@ -28,7 +28,7 @@ void autonSkills1() {
 	// stopall(10);
 
 	shoot();
-	wait1Msec(2100);
+	wait1Msec(3500);
 	stopGun();
 	backwardEncoder(2.06, 127);
 
@@ -109,7 +109,7 @@ void autonSkills1() {
 
 	intakeIn();
 	chassisForward(127);
-	wait1Msec(4530);
+	wait1Msec(4630);
 	pause();
 	chassisBackwards(50);
 	wait1Msec(100);

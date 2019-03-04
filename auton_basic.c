@@ -35,17 +35,17 @@ void stopall(int time) {
 
 
 void chassisForward(int speed) {
-	motor(LeftRear) = speed;
-	motor(RightRear) = speed;
-	motor(LeftFront) = speed;
-	motor(RightFront) = speed;
-}
-
-void chassisBackwards(int speed) {
 	motor(LeftRear) = -speed;
 	motor(RightRear) = -speed;
 	motor(LeftFront) = -speed;
 	motor(RightFront) = -speed;
+}
+
+void chassisBackwards(int speed) {
+	motor(LeftRear) = speed;
+	motor(RightRear) = speed;
+	motor(LeftFront) = speed;
+	motor(RightFront) = speed;
 }
 
 void clawUp() {

@@ -3,12 +3,14 @@ void auton5() {
 	wait1Msec(2900);
 	stopGun();
 
-	gyroTurnClockwise(180);
+	gyroTurnCounterClockwise(180);
 	pause();
 
 	chassisBackwards(127);
 	wait1Msec(250);
+	stopChassis();
 
+	pause();
 	intakeIn();
 	forwardEncoderAdaptiveSpeed(18.5, 127, false);
 	shoot();
